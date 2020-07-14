@@ -107,8 +107,6 @@ RUN npm install -g heroku@${HEROKU_CLI_VERSION} \
  && rm -rf man doc html *.md *.bat *.yml changelogs scripts test AUTHORS LICENSE Makefile \
  && find /usr/local/lib/node_modules/ -name test -o -name tests -o -name .bin -type d | xargs rm -rf
 
-COPY ["./.netrc", "./.netrc"]
-
  # INSTALLS HEROKU CLI END
 
 
