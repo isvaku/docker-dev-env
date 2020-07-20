@@ -1,0 +1,29 @@
+version: '3'
+services:
+    db:
+        image: isvaku/postgres:version-0.1
+        environment:
+            - POSTGRES_PASSWORD=mysecretpassword
+            - POSTGRES_USER=root
+            - HEROKU_EMAIL=<your Heroku username>
+            - HEROKU_API_KEY=<your Heroku API KEY>
+    web227:
+        image: isvaku/ruby-227-alpine:version-0.1
+        command: bash
+        ports:
+            - "3001:3000"
+        depends_on:
+            - db
+        stdin_open: true
+        tty: true
+    web230:
+        image: isvaku/ruby-230-alpine:version-0.1
+        command: bash
+        ports:
+            - "3000:3000"
+        depends_on:
+            - db
+        volumes: 
+            - ~/projects:/home/app
+        stdin_open: true
+        tty: true
